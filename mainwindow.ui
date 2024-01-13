@@ -66,6 +66,19 @@
      <string>B&amp;W</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="binarize_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>0</y>
+      <width>94</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Binarize</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

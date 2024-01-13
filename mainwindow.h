@@ -23,6 +23,8 @@ private slots:
 
     void on_bwConvertionButton_clicked();
 
+    void on_binarize_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

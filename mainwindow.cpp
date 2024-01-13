@@ -63,8 +63,6 @@ void MainWindow::on_blurButton_clicked()
     QPixmap mimage(ui->label->pixmap(Qt::ReturnByValue));
     QImage image = mimage.toImage();
 
-    // qDebug() << "taile" << image.size();
-
     cv::Mat CVimage (image.height(),  image.width(), CV_8UC4, image.bits(),  image.bytesPerLine());
     cv::Mat blurredMat(image.height(),  image.width(), CV_8UC4);
     cv::medianBlur(CVimage, blurredMat, 11);
@@ -88,5 +86,21 @@ void MainWindow::on_bwConvertionButton_clicked()
 
     QImage bwImage = ASM::cvMatToQImage(greyImage);
     ui->label->setPixmap(QPixmap::fromImage(bwImage));
+}
+
+
+void MainWindow::on_binarize_pushButton_clicked()
+{
+    QPixmap mimage(ui->label->pixmap(Qt::ReturnByValue));
+    QImage image = mimage.toImage();
+
+    cv::Mat CVimage (image.height(), image.width(), CV_8UC4, image.bits(), image.bytesPerLine());
+    cv::Mat binaryImage (image.height(), image.width(), CV_8UC4);
+
+    cv::cvtColor(CVimage, CVimage, CV_BGR2GRAY);
+    cv::threshold(CVimage, binaryImage, 128.0, 255.0, CV_THRESH_OTSU);
+
+    QImage binImage = ASM::cvMatToQImage(binaryImage);
+    ui->label->setPixmap(QPixmap::fromImage(binImage));
 }
 
